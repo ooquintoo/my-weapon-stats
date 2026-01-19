@@ -33,3 +33,18 @@ function showTier(tier) {
 
 // Start by showing T1 automatically
 showTier('T1');
+function searchWeapons() {
+    let input = document.getElementById('weaponSearch').value.toLowerCase();
+    let cards = document.getElementsByClassName('card');
+
+    for (let i = 0; i < cards.length; i++) {
+        // Look at the text inside the card header
+        let name = cards[i].querySelector('.card-header').innerText.toLowerCase();
+        
+        if (name.includes(input)) {
+            cards[i].style.display = ""; // Show
+        } else {
+            cards[i].style.display = "none"; // Hide
+        }
+    }
+}
