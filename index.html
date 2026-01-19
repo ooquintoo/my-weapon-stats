@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windy City Weapon Stats</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <button onclick="showTier('T1')">Show T1</button>
+        <button onclick="showTier('T1.5')">Show T1.5</button>
+        <button onclick="showTier('T2')">Show T2</button>
+        <button onclick="showRandomizer()">Randomize</button>
+    </div>
+
+    <div class="main-content">
+        <h1 class="title">Windy City Weapon Stats</h1>
+        <h2 id="tier-header">Tier 1 Weapons</h2>
+        <div id="display-area" class="weapon-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
