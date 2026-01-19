@@ -33,20 +33,3 @@ function showTier(tier) {
 
 // Start by showing T1 automatically
 showTier('T1');
-.search-container {
-    margin-bottom: 20px;
-}
-
-#weaponSearch {
-    width: 60%;
-    padding: 12px;
-    background: #111;
-    border: 1px solid #9c27b0;
-    color: white;
-    border-radius: 20px;
-    outline: none;
-}
-
-#weaponSearch:focus {
-    box-shadow: 0 0 10px #9c27b0;
-}
