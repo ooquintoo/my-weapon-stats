@@ -2,33 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windy City Weapon Stats</title>
+    <title>Windy City Stats</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="sidebar">
-        <button onclick="showTier('T1')">Show T1</button>
-        <button onclick="showTier('T1.5')">Show T1.5</button>
-        <button onclick="showTier('T2')">Show T2</button>
-        <button onclick="showRandomizer()">Randomize</button>
+        <button onclick="renderTier('T1')">Show T1</button>
+        <button onclick="renderTier('T1.5')">Show T1.5</button>
+        <button onclick="showSection('randomizer')">Randomize</button>
+        <button onclick="showSection('drugs')">Drugs</button>
     </div>
 
     <div class="main-content">
         <h1 class="title">Windy City Weapon Stats</h1>
-        <h2 id="tier-header">Tier 1 Weapons</h2>
-        <div id="display-area" class="weapon-grid"></div>
-    </div>
+        
+        <input type="text" id="weaponSearch" placeholder="Search weapons..." onkeyup="searchWeapons()">
 
+        <div id="weapon-display">
+            <h2 id="tier-label">Tier 1 Weapons</h2>
+            <div id="weapon-grid" class="grid"></div>
+        </div>
+
+        <div id="randomizer-section" style="display:none;">
+            <h2>Simulate a faction drop spin</h2>
+            <div class="spin-box">
+                <div id="spin-result">???</div>
+                <button class="spin-btn" onclick="spinWeapon()">Spin</button>
+            </div>
+        </div>
+
+        <div id="drug-section" style="display:none;">
+            <h2>Drug Randomizer</h2>
+            <p>Generate a batch (75-100 for T1, 100-180 for T2)</p>
+            <button class="drug-btn" onclick="generateDrugs()">Generate Batch</button>
+            <div id="drug-output"></div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
-<div class="search-container">
-    <input type="text" id="weaponSearch" placeholder="Search weapons..." onkeyup="searchWeapons()">
-</div>
-<div class="drug-randomizer">
-    <h3>Drug Randomizer</h3>
-    <p>Generate a batch (75-100 for T1, 100-180 for T2)</p>
-    <button onclick="generateDrugs('T1')">Generate T1 Batch</button>
-    <div id="drug-result"></div>
-</div>
