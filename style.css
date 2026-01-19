@@ -1,74 +1,15 @@
-body {
-    background-color: #0b0b0b;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    margin: 0;
-}
+/* Sidebar and Layout */
+.sidebar { width: 160px; position: fixed; height: 100%; padding: 20px; background: #000; border-right: 1px solid #333; }
+.main-content { margin-left: 200px; padding: 40px; text-align: center; }
 
-.sidebar {
-    width: 180px;
-    height: 100vh;
-    padding: 20px;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+/* Grid and Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+.card { background: #111; padding: 10px; border-radius: 5px; border: 2px solid #4caf50; } /* */
+.card img { width: 100%; border-radius: 4px; }
 
-button {
-    background: transparent;
-    border: 1px solid #9c27b0;
-    color: #9c27b0;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 4px;
-}
+/* Spin Box */
+.spin-box { background: #1a1a1a; padding: 50px; border: 2px solid #ffd700; margin: 20px auto; width: 300px; }
+#spin-result { font-size: 24px; color: #ffd700; margin-bottom: 20px; }
 
-button:hover {
-    background: #9c27b0;
-    color: white;
-}
-
-.main-content { flex-grow: 1; padding: 20px; text-align: center; }
-
-.weapon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 15px;
-    justify-content: center;
-}
-
-/* Card Rarity Styling */
-.card {
-    background: #1a1a1a;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    border: 2px solid #555; /* Default */
-}
-
-.card.green { border-color: #4caf50; background: linear-gradient(180deg, #1b3d1b, #111); }
-.card.purple { border-color: #a020f0; background: linear-gradient(180deg, #2e1541, #111); }
-.card.orange { border-color: #ff9800; background: linear-gradient(180deg, #462a00, #111); }
-
-.card img { width: 100%; height: auto; margin: 10px 0; }
-.stars { color: white; font-size: 14px; text-align: right; }
-.search-container {
-    margin-bottom: 20px;
-}
-
-#weaponSearch {
-    width: 60%;
-    padding: 12px;
-    background: #111;
-    border: 1px solid #9c27b0;
-    color: white;
-    border-radius: 20px;
-    outline: none;
-}
-
-#weaponSearch:focus {
-    box-shadow: 0 0 10px #9c27b0;
-}
+/* Search Bar */
+#weaponSearch { padding: 10px; width: 50%; background: #222; border: 1px solid #9c27b0; color: white; margin-bottom: 20px; }
