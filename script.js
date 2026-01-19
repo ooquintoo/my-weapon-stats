@@ -1,63 +1,47 @@
-const weaponData = {
+onst weaponData = {
     "T1": [
-        { name: "Walther P88", img: "walther.png", stars: 1, color: "gray" },
-        { name: "Glock 20", img: "g20.png", stars: 1, color: "gray" },
-        { name: "Glock 45x", img: "g45x.png", stars: 2, color: "green" },
-        { name: "Glock 17", img: "g17.png", stars: 2, color: "green" },
-        { name: "Sig P320", img: "sig.png", stars: 2, color: "green" }
+        { name: "Glock 17", img: "g17.png", stars: 2 },
+        { name: "Glock 45x", img: "g45x.png", stars: 2 },
+        { name: "Sig P320", img: "sig.png", stars: 2 }
     ],
     "T1.5": [
-        { name: "Black Draco", img: "draco.png", stars: 5, color: "orange" },
-        { name: "Glock 19x Binary", img: "g19xb.png", stars: 4, color: "purple" },
-        { name: "Honey Badger", img: "honey.png", stars: 5, color: "orange" }
-    ],
-    "T2": [] // Add your T2 weapons here
+        { name: "Black Draco", img: "draco.png", stars: 5 },
+        { name: "Honey Badger", img: "honey.png", stars: 5 }
+    ]
 };
 
-function showTier(tier) {
-    const display = document.getElementById('display-area');
-    document.getElementById('tier-header').innerText = tier + " Weapons";
-    display.innerHTML = ""; // Clear current items
+// Switch between Weapons, Randomizer, and Drugs
+function showSection(section) {
+    document.getElementById('weapon-display').style.display = (section === 'weapons') ? 'block' : 'none';
+    document.getElementById('randomizer-section').style.display = (section === 'randomizer') ? 'block' : 'none';
+    document.getElementById('drug-section').style.display = (section === 'drugs') ? 'block' : 'none';
+}
 
-    weaponData[tier].forEach(item => {
-        const card = `
-            <div class="card ${item.color}">
-                <div style="text-align:left; font-size:12px;">${item.name}</div>
-                <img src="images/${item.img}" alt="${item.name}">
-                <div class="stars">${"★".repeat(item.stars)}</div>
-            </div>
-        `;
-        display.innerHTML += card;
+function renderTier(tier) {
+    showSection('weapons');
+    document.getElementById('tier-label').innerText = tier + " Weapons";
+    const grid = document.getElementById('weapon-grid');
+    grid.innerHTML = "";
+    
+    weaponData[tier].forEach(wpn => {
+        grid.innerHTML += `
+            <div class="card">
+                <p>${wpn.name}</p>
+                <img src="images/${wpn.img}">
+                <div style="text-align:right">★ ${wpn.stars}</div>
+            </div>`;
     });
 }
 
-// Start by showing T1 automatically
-showTier('T1');
-function searchWeapons() {
-    let input = document.getElementById('weaponSearch').value.toLowerCase();
-    let cards = document.getElementsByClassName('card');
-
-    for (let i = 0; i < cards.length; i++) {
-        // Look at the text inside the card header
-        let name = cards[i].querySelector('.card-header').innerText.toLowerCase();
-        
-        if (name.includes(input)) {
-            cards[i].style.display = ""; // Show
-        } else {
-            cards[i].style.display = "none"; // Hide
-        }
-    }
+// Drug Randomizer Logic
+function generateDrugs() {
+    let amount = Math.floor(Math.random() * (100 - 75 + 1)) + 75;
+    document.getElementById('drug-output').innerHTML = `<h3>Generated: ${amount} units</h3>`;
 }
-function generateDrugs(tier) {
-    let min = (tier === 'T1') ? 75 : 100;
-    let max = (tier === 'T1') ? 100 : 180;
-    
-    // Generates a random number between min and max
-    let amount = Math.floor(Math.random() * (max - min + 1)) + min;
-    
-    document.getElementById('drug-result').innerHTML = `
-        <div style="color: #4caf50; font-weight: bold; margin-top: 10px;">
-            Batch Generated: ${amount} units
-        </div>
-    `;
+
+// Spin Randomizer Logic
+function spinWeapon() {
+    const all = [...weaponData["T1"], ...weaponData["T1.5"]];
+    const result = all[Math.floor(Math.random() * all.length)];
+    document.getElementById('spin-result').innerText = result.name;
 }
