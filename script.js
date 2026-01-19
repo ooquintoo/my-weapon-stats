@@ -48,3 +48,16 @@ function searchWeapons() {
         }
     }
 }
+function generateDrugs(tier) {
+    let min = (tier === 'T1') ? 75 : 100;
+    let max = (tier === 'T1') ? 100 : 180;
+    
+    // Generates a random number between min and max
+    let amount = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    document.getElementById('drug-result').innerHTML = `
+        <div style="color: #4caf50; font-weight: bold; margin-top: 10px;">
+            Batch Generated: ${amount} units
+        </div>
+    `;
+}
